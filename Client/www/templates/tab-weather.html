@@ -4,10 +4,31 @@
     </button>
   </ion-nav-buttons>
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+  	<div class="row">
+	  <div class="col col-50"> 
+	  	<button class="button button-clear ion-ios-sunny-outline weather-btn" ng-click="">
+	  		<br>Sunny
+	  	</button>
+ 	  </div>
+ 	  <div class="col col-50"> 
+	  	<button class="button button-clear ion-ios-sunny-outline" ng-click="">
+	  		<br>Cloudy
+	  	</button>
+ 	  </div> 
+	</div>
+
+	<div class="row">
+	  <div class="col col-50"> 
+	  	<button class="button button-clear ion-ios-sunny-outline" ng-click="">
+	  	<br>
+	  		Rainy
+	  	</button>
+ 	  </div>
+ 	  <div class="col col-50"> 
+	  	<button class="button button-clear ion-ios-sunny-outline" ng-click="" style="height:100px">
+	  		<br>Stormy
+	  	</button>
+ 	  </div> 
+	</div>
   </ion-content>
 </ion-view>

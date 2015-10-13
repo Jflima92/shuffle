@@ -22,4 +22,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "www/lib/ionic/scss/ionic";
 
 
+.weather-btn{
+	color: black;
+}
 
+body > ion-nav-view > ion-tabs > ion-nav-view:nth-child(3) > ion-view > ion-content > div.scroll > div:nth-child(1) > div:nth-child(1) > button {
+	color: black;
+}
