@@ -1,5 +1,26 @@
 angular.module('shuffle.controllers', [])
 
+
+    .controller('NavCtrl', function($scope, $state, $location) {
+
+        $scope.buttonHidden = false;
+
+        $scope.gotoSettings = function(){
+            $scope.buttonHidden = true;
+            $location.url('settings');
+        }
+    })
+
+    .controller('SettingsCtrl', function($scope, $ionicNavBarDelegate, $location) {
+        console.log("fds")
+        $ionicNavBarDelegate.showBar('false');
+
+        $scope.gotoHome = function(){
+            $location.url('tab/mood')
+        }
+
+    })
+
     .controller('MoodCtrl', function($scope) {})
 
     .controller('RoutinesCtrl', function($scope) {

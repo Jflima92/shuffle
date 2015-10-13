@@ -41,6 +41,12 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services'])
             controller: 'IntroCtrl'
           })
 
+          .state('Settings', {
+              url: '/settings',
+              templateUrl: 'templates/settings.html',
+              controller: 'SettingsCtrl'
+          })
+
         // setup an abstract state for the tabs directive
           .state('tab', {
             url: '/tab',
