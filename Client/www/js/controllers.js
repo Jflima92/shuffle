@@ -1,7 +1,11 @@
 angular.module('shuffle.controllers', [])
 
 
-    .controller('NavCtrl', function($scope, $state, $location) {
+    .controller('NavCtrl', function($scope, $state, $location, socket) {
+
+        socket.on('connect', function(){
+            console.log("connected")
+        })
 
         $scope.buttonHidden = false;
 

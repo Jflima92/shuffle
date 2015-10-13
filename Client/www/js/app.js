@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services'])
+angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', 'btford.socket-io'])
 
     .run(function($ionicPlatform) {
       $ionicPlatform.ready(function() {
