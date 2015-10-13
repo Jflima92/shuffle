@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', 'btford.socket-io'])
+angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', 'btford.socket-io', 'ngCordova'])
 
-    .run(function($ionicPlatform) {
+    .run(function($ionicPlatform, $cordovaFacebook) {
       $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -20,6 +20,13 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
           // org.apache.cordova.statusbar required
           StatusBar.styleLightContent();
         }
+
+
+          var appID = 1476479009327244;
+          var version = "v2.0"; // or leave blank and default is v2.0
+
+          $cordovaFacebook.browserInit(appID, version);
+
       });
     })
 
