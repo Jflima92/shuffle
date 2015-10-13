@@ -27,7 +27,8 @@
         "APP_ID": "1476479009327244",
         "APP_NAME": "Shuffle"
       }
-    }
+    },
+    "cordova-plugin-inappbrowser"
   ],
   "cordovaPlatforms": [
     "android"
