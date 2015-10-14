@@ -15,9 +15,19 @@ angular.module('shuffle.controllers', [])
         }
     })
 
-    .controller('SettingsCtrl', function($scope, $ionicNavBarDelegate, $location) {
+    .controller('SettingsCtrl', function($scope, $ionicNavBarDelegate, $location, $ionicPlatform, $cordovaFacebook) {
         console.log("fds")
         $ionicNavBarDelegate.showBar('false');
+
+
+            $scope.logout = function(){
+                console.log("crl");
+                $ionicPlatform.ready(function(){
+                    console.log("crl");
+                $cordovaFacebook.logout();
+            })
+        }
+
 
         $scope.gotoHome = function(){
             $location.url('tab/mood')
@@ -25,32 +35,34 @@ angular.module('shuffle.controllers', [])
 
     })
 
-    .controller('MoodCtrl', function($scope) {})
+    .controller('MoodCtrl', function($scope) {
+
+    })
 
     .controller('RoutinesCtrl', function($scope) {
 
 
     })
 
-    .controller('IntroCtrl', function($scope, $state, $cordovaFacebook, $ionicPlatform) {
+    .controller('IntroCtrl', function($scope, $state, $cordovaFacebook, $ionicPlatform, $location, $rootScope) {
 
         $scope.facebookLogin = function(){
 
             $ionicPlatform.ready(function(){
 
-                console.log("Cenas amarelas")
-
                 $cordovaFacebook.login(["public_profile", "email", "user_friends"])
                     .then(function(success) {
                         console.log(JSON.toString(success));
-                        // { id: "634565435",
-                        //   lastName: "bob"
-                        //   ...
-                        // }
+                        $cordovaFacebook.api("me", ["public_profile"])
+                            .then(function(user) {
+                                $scope.user = user;
+                                $rootScope.userPic = 'http://graph.facebook.com/' + user.id + '/picture?width=270&height=270'
+                            })
                     }, function (error) {
                         // error
                     });
             })
+            $location.url('tab/mood')
 
         }
 

@@ -9,7 +9,8 @@
         <div class="row" style="margin-top: 10%">
           <div class="col col-25"></div>
           <div class="col col-50">
-            <img ng-src="img/profile.png" style="width: 100%; border-radius:100%"/>
+            <!--<img ng-src="img/profile.png" style="width: 100%; border-radius:100%"/>-->
+              <img ng-src="{{userPic}}" style="width: 100%; border-radius:100%" />
           </div> 
           <div class="col col-25"></div>
         </div>
@@ -22,7 +23,7 @@
 
         <div class="row" style="margin-top: 20%">
             <div class="col" style="text-align: center;">
-                <button class="button button-light"> log out </button>
+                <button class="button button-light" ng-click="logout()"> log out </button>
             </div>
         </div>
 
