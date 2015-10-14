@@ -1,4 +1,5 @@
 <ion-view view-title="Settings">
+
     <ion-nav-buttons side="right" ng-hide="buttonHidden">
         <button class="button button-clear ion-ios-arrow-back" ng-click="gotoHome()">
             Back
@@ -30,7 +31,13 @@
 
         <div class="row" style="margin-top: 20%">
             <div class="col" style="text-align: center;">
-                <button class="button button-clear"> about </button>
+                <button class="button button-clear" ng-click="gotoLists()"> Lists </button>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20%">
+            <div class="col" style="text-align: center;">
+                <button class="button button-clear" ng-click="gotoAbout()"> about </button>
             </div>
         </div>
 

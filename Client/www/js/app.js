@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', 'btford.socket-io', 'ngCordova'])
+angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', 'btford.socket-io', 'ngCordova', 'spotify'])
 
     .run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
@@ -58,7 +58,6 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
             .tabs.position('bottom');
 
         $stateProvider
-
             .state('Intro', {
                 url: '/intro',
                 templateUrl: 'templates/intro.html',
@@ -71,6 +70,18 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
                 controller: 'SettingsCtrl'
             })
 
+            .state('About', {
+               url: '/about',
+               templateUrl: 'templates/about.html',
+               controller: 'AboutCtrl'
+            })
+
+            .state('Player', {
+               url: '/player',
+               templateUrl: 'templates/player.html',
+               controller: 'PlayerCtrl'
+            })
+
             // setup an abstract state for the tabs directive
             .state('tab', {
                 url: '/tab',
@@ -79,7 +90,6 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
             })
 
             // Each tab has its own nav history stack:
-
             .state('tab.mood', {
                 url: '/mood',
                 views: {
@@ -108,17 +118,7 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
              controller: 'ChatsCtrl'
              }
              }
-             })
-             .state('tab.chat-detail', {
-             url: '/chats/:chatId',
-             views: {
-             'tab-chats': {
-             templateUrl: 'templates/chat-detail.html',
-             controller: 'ChatDetailCtrl'
-             }
-             }
              })*/
-
             .state('tab.weather', {
                 url: '/weather',
                 views: {
@@ -127,6 +127,18 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
                         controller: 'WeatherCtrl'
                     }
                 }
+            })
+
+            .state('playlist', {
+                url: '/playlist/:listid/:userid/:listname',
+                templateUrl: 'templates/playlist.html',
+                controller: 'PlaylistCtrl'
+            })
+
+            .state('lists', {
+                url: '/lists',
+                templateUrl: 'templates/lists.html',
+                controller: 'ListsCtrl'
             });
 
         // if none of the above states are matched, use this as the fallback
