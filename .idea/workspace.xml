@@ -2,11 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e0c6282-d12d-4a4a-b5fd-f81ae59fe0ed" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/js/app.js" afterPath="$PROJECT_DIR$/Client/www/js/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/angry.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/routines/break.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/calm.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/routines/chill.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/weather/cloudy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/creative.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/routines/dinner.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/energized.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/groovy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/happy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/melancholic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/routines/morning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/routines/party.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/psyched.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/weather/rainy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/sad.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/routines/sleep.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/weather/stormy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/routines/study.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/weather/sunny.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/tired.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/routines/work.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/routines/workout.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/www/img/moods/zen.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Client/www/img/bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Client/www/img/bg.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Client/www/img/logos/bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Client/www/img/spotify_player.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Client/www/img/square2.png" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/www/img/square.png" afterPath="$PROJECT_DIR$/Client/www/img/moods/peaceful.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/js/controllers.js" afterPath="$PROJECT_DIR$/Client/www/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/js/services.js" afterPath="$PROJECT_DIR$/Client/www/js/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/templates/settings.html" afterPath="$PROJECT_DIR$/Client/www/templates/settings.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/templates/tab-mood.html" afterPath="$PROJECT_DIR$/Client/www/templates/tab-mood.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/templates/tab-routines.html" afterPath="$PROJECT_DIR$/Client/www/templates/tab-routines.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/templates/tab-weather.html" afterPath="$PROJECT_DIR$/Client/www/templates/tab-weather.html" />
     </list>
     <ignored path="shuffle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +70,8 @@
       <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/www/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9137056">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.18274112">
+              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -637,12 +666,12 @@
       <workItem from="1444848378993" duration="1584000" />
       <workItem from="1444851311658" duration="6188000" />
       <workItem from="1444919836394" duration="4192000" />
-      <workItem from="1444924887613" duration="4928000" />
+      <workItem from="1444924887613" duration="5097000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60597000" />
+    <option name="totallyTimeSpent" value="60766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1360" height="740" extended-state="0" />
@@ -1100,8 +1129,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/www/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9137056">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.18274112">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
           <folding />
         </state>
       </provider>
