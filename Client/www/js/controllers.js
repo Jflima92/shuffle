@@ -1,11 +1,10 @@
 angular.module('shuffle.controllers', [])
 
 
-    .controller('NavCtrl', function($scope, $state, $location, socket) {
+    .controller('NavCtrl', function($scope, $state, $location, socket, $localstorage, $rootScope) {
 
-        socket.on('connect', function(){
-            console.log("connected")
-        })
+
+
 
         $scope.buttonHidden = false;
 
@@ -16,16 +15,26 @@ angular.module('shuffle.controllers', [])
     })
 
 
-    .controller('SettingsCtrl', function($scope, $ionicNavBarDelegate, $location) {
+    .controller('SettingsCtrl', function($scope, $localstorage, $ionicNavBarDelegate, $location,$rootScope, $cordovaFacebook, $ionicPlatform) {
 
         $ionicNavBarDelegate.showBar('false');
 
 
-            $scope.logout = function(){
-                console.log("crl");
-                $ionicPlatform.ready(function(){
-                    console.log("crl");
-                $cordovaFacebook.logout();
+        $scope.logout = function(){
+
+            $ionicPlatform.ready(function(){
+                console.log("try to logout");
+                $cordovaFacebook.logout()
+                    .then(function(success) {
+                        console.log("logged out");
+                        $localstorage.clear();
+                        $rootScope.$broadcast("logout", null);
+
+                    }, function (error) {
+                        console.log("erro: " + error)
+                        $rootScope.$broadcast("logout", null);
+                    });
+
             })
         }
 
@@ -34,7 +43,7 @@ angular.module('shuffle.controllers', [])
             $location.url('tab/mood')
         }
 
-         $scope.gotoAbout = function(){
+        $scope.gotoAbout = function(){
             $scope.buttonHidden = true;
             $location.url('about');
         }
@@ -58,7 +67,17 @@ angular.module('shuffle.controllers', [])
 
     .controller('RoutinesCtrl', function($scope) {})
 
-    .controller('IntroCtrl', function($scope, $state, $cordovaFacebook, $ionicPlatform, $location, $rootScope) {
+    .controller('IntroCtrl', function($scope, $state, $cordovaFacebook, $ionicPlatform, socket, $location, $rootScope, $localstorage) {
+
+        socket.on('connect', function(){
+            console.log("connected")
+        })
+
+        if($localstorage.get('loggedIn') == 'true'){
+            $rootScope.userPic = $localstorage.get('userPic');
+            $rootScope.userName = $localstorage.getObject('user').name;
+            $location.url('tab/mood');
+        }
 
         $scope.facebookLogin = function(){
 
@@ -69,20 +88,36 @@ angular.module('shuffle.controllers', [])
                         console.log(JSON.toString(success));
                         $cordovaFacebook.api("me", ["public_profile"])
                             .then(function(user) {
-                                $scope.user = user;
-                                $rootScope.userPic = 'http://graph.facebook.com/' + user.id + '/picture?width=270&height=270'
+                                var userInfo = user;
+                                console.log(JSON.stringify(userInfo));
+                                var picture = 'http://graph.facebook.com/' + user.id + '/picture?width=270&height=270';
+                                $localstorage.setObject('user', user);
+                                $localstorage.set('loggedIn', 'true');
+                                $localstorage.set('userPic', 'http://graph.facebook.com/' + user.id + '/picture?width=270&height=270');
+                                $rootScope.userPic = picture;
+                                $rootScope.userName = userInfo.name;
                             })
                     }, function (error) {
                         // error
                     });
             })
+
             $location.url('tab/mood')
 
         }
 
         $scope.enter = function(){
-            $state.go('tab.mood')
+            $rootScope.userPic = "img/profile.png";
+            $rootScope.userName = "Deolindo Antonio";
+            $state.go('tab.mood');
         }
+
+        $rootScope.$on("logout", function(event, response){
+            $rootScope.userPic = "img/profile.png";
+            $rootScope.userName = "Deolindo Antonio";
+            $location.url("/intro");
+
+        })
     })
 
     .controller('ChatsCtrl', function($scope, Chats) {
@@ -124,41 +159,41 @@ angular.module('shuffle.controllers', [])
     })
 
     .controller('ListsCtrl', function($scope, $ionicPlatform, $cordovaOauth, Spotify) {
-      var clientId = 'a8ca1abb7621448cb3a1216604f321c3';
-      $scope.playlists = [];
-     
+        var clientId = 'a8ca1abb7621448cb3a1216604f321c3';
+        $scope.playlists = [];
+
         $scope.performLogin = function() {
-          $cordovaOauth.spotify(clientId, ['user-read-private', 'playlist-read-private']).then(function(result) {
-            window.localStorage.setItem('spotify-token', result.access_token);
-            Spotify.setAuthToken(result.access_token);
-            $scope.updateInfo();
-          }, function(error) {
-              console.log("Error -> " + error);
-          });
+            $cordovaOauth.spotify(clientId, ['user-read-private', 'playlist-read-private']).then(function(result) {
+                window.localStorage.setItem('spotify-token', result.access_token);
+                Spotify.setAuthToken(result.access_token);
+                $scope.updateInfo();
+            }, function(error) {
+                console.log("Error -> " + error);
+            });
         };
-     
+
         $scope.updateInfo = function() {
-          Spotify.getCurrentUser().then(function (data) {
-            $scope.getUserPlaylists(data.id);
-          }, function(error) {
-            $scope.performLogin();
-          });
+            Spotify.getCurrentUser().then(function (data) {
+                $scope.getUserPlaylists(data.id);
+            }, function(error) {
+                $scope.performLogin();
+            });
         };
-     
+
         $ionicPlatform.ready(function() {
-          var storedToken = window.localStorage.getItem('spotify-token');
-          if (storedToken !== null) {
-            Spotify.setAuthToken(storedToken);
-            $scope.updateInfo();
-          } else {
-            $scope.performLogin();
-          }
+            var storedToken = window.localStorage.getItem('spotify-token');
+            if (storedToken !== null) {
+                Spotify.setAuthToken(storedToken);
+                $scope.updateInfo();
+            } else {
+                $scope.performLogin();
+            }
         });
-     
+
         $scope.getUserPlaylists = function(userid) {
-          Spotify.getUserPlaylists(userid).then(function (data) {
-            $scope.playlists = data.items;
-          });
+            Spotify.getUserPlaylists(userid).then(function (data) {
+                $scope.playlists = data.items;
+            });
         };
-    // END OF NEW
+        // END OF NEW
     });

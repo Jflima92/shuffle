@@ -86,6 +86,7 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
             .state('tab', {
                 url: '/tab',
                 abstract: true,
+                controller: 'NavCtrl',
                 templateUrl: 'templates/tabs.html'
             })
 
