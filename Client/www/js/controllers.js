@@ -22,9 +22,7 @@ angular.module('shuffle.controllers', [])
 
 
             $scope.logout = function(){
-                console.log("crl");
                 $ionicPlatform.ready(function(){
-                    console.log("crl");
                 $cordovaFacebook.logout();
             })
         }
@@ -48,15 +46,23 @@ angular.module('shuffle.controllers', [])
     .controller('PlayerCtrl', function($scope, $ionicNavBarDelegate, $location) {
         $ionicNavBarDelegate.showBar('false');
 
-
         $scope.gotoHome = function(){
             $location.url('mood')
         }
     })
 
-    .controller('MoodCtrl', function($scope) {})
+    .controller('MoodCtrl', function($scope) {
+        $scope.gotoPlaylist = function(type){
+            console.log(type);
+        }
 
-    .controller('RoutinesCtrl', function($scope) {})
+    })
+
+    .controller('RoutinesCtrl', function($scope) {
+        $scope.gotoPlaylist = function(type){
+            console.log(type);
+        }
+    })
 
     .controller('IntroCtrl', function($scope, $state, $cordovaFacebook, $ionicPlatform, $location, $rootScope) {
 
@@ -107,6 +113,10 @@ angular.module('shuffle.controllers', [])
     .controller('WeatherCtrl', function($scope) {
         $scope.settings = {
             enableFriends: true
+        };
+
+        $scope.gotoPlaylist = function(type){
+            console.log(type);
         };
     })
 
