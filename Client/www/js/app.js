@@ -131,13 +131,13 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
             })
 
             .state('playlist', {
-                url: '/playlist/:listid/:userid/:listname',
+                url: '/playlist/:owner_id/:playlist_id',
                 templateUrl: 'templates/playlist.html',
                 controller: 'PlaylistCtrl'
             })
 
             .state('lists', {
-                url: '/lists',
+                url: '/lists/:keywords',
                 templateUrl: 'templates/lists.html',
                 controller: 'ListsCtrl'
             });

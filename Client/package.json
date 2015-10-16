@@ -28,7 +28,8 @@
         "APP_NAME": "Shuffle"
       }
     },
-    "cordova-plugin-inappbrowser"
+    "cordova-plugin-inappbrowser",
+    "org.apache.cordova.media"
   ],
   "cordovaPlatforms": [
     "android"

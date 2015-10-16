@@ -18,7 +18,7 @@ angular.module('shuffle.controllers', [])
     .controller('SettingsCtrl', function($scope, $localstorage, $ionicNavBarDelegate, $location,$rootScope, $cordovaFacebook, $ionicPlatform) {
 
         $ionicNavBarDelegate.showBar('false');
-        
+
         $scope.logout = function(){
 
             $ionicPlatform.ready(function(){
@@ -62,16 +62,18 @@ angular.module('shuffle.controllers', [])
         }
     })
 
-    .controller('MoodCtrl', function($scope) {
+    .controller('MoodCtrl', function($scope, $location, $state) {
         $scope.gotoPlaylist = function(type){
             console.log(type);
+            $state.go('lists', {keywords: type});
         }
 
     })
 
-    .controller('RoutinesCtrl', function($scope) {
+    .controller('RoutinesCtrl', function($scope, $state) {
         $scope.gotoPlaylist = function(type){
             console.log(type);
+            $state.go('lists', {keywords: type});
         }
     })
 
@@ -147,13 +149,14 @@ angular.module('shuffle.controllers', [])
         $scope.chat = Chats.get($stateParams.chatId);
     })
 
-    .controller('WeatherCtrl', function($scope) {
+    .controller('WeatherCtrl', function($scope, $state) {
         $scope.settings = {
             enableFriends: true
         };
 
         $scope.gotoPlaylist = function(type){
             console.log(type);
+            $state.go('lists', {keywords: type});
         };
     })
 
@@ -166,46 +169,152 @@ angular.module('shuffle.controllers', [])
     })
 
     // NEW 
-    .controller('PlaylistCtrl', function(){
+    .controller('PlaylistCtrl', function($scope, $cordovaOauth, $ionicPlatform, $localstorage, Spotify, $cordovaMedia, $stateParams){
         console.log("BULLSHIT");
-    })
-
-    .controller('ListsCtrl', function($scope, $ionicPlatform, $cordovaOauth, Spotify) {
         var clientId = 'a8ca1abb7621448cb3a1216604f321c3';
-        $scope.playlists = [];
+
+        var owner_id = $stateParams.owner_id;
+        var playlist_id = $stateParams.playlist_id;
+        var spotToken = $localstorage.get('spotify-token');
+        console.log("https://api.spotify.com/v1/users/" + owner_id + "/playlists/" + playlist_id + "/tracks");
 
         $scope.performLogin = function() {
             $cordovaOauth.spotify(clientId, ['user-read-private', 'playlist-read-private']).then(function(result) {
-                window.localStorage.setItem('spotify-token', result.access_token);
+                $localstorage.set('spotify-token', result.access_token);
                 Spotify.setAuthToken(result.access_token);
-                $scope.updateInfo();
             }, function(error) {
                 console.log("Error -> " + error);
             });
         };
 
-        $scope.updateInfo = function() {
-            Spotify.getCurrentUser().then(function (data) {
-                $scope.getUserPlaylists(data.id);
-            }, function(error) {
-                $scope.performLogin();
-            });
-        };
+        if(spotToken != null){
+            Spotify.setAuthToken(spotToken)
+        }
+        else {
+            $scope.performLogin();
+        }
 
-        $ionicPlatform.ready(function() {
-            var storedToken = window.localStorage.getItem('spotify-token');
-            if (storedToken !== null) {
-                Spotify.setAuthToken(storedToken);
-                $scope.updateInfo();
-            } else {
+
+
+
+        Spotify.getPlaylist(owner_id, playlist_id,{"limit": "10"}).then(function (data) {
+            $scope.tracks = data.tracks.items;
+        }, function(error){
+            var spotToken = $localstorage.get('spotify-token');
+            if(spotToken != null){
+                Spotify.setAuthToken(spotToken)
+            }
+            else {
                 $scope.performLogin();
             }
         });
 
-        $scope.getUserPlaylists = function(userid) {
-            Spotify.getUserPlaylists(userid).then(function (data) {
-                $scope.playlists = data.items;
-            });
+        $scope.audio = null;
+        $scope.playTrack = function(trackInfo) {
+
+            console.log(trackInfo.track.preview_url);
+            /*ionic.Platform.ready(function(){
+                $scope.audio = new Media(trackInfo.track.preview_url,  onSuccess, onError);
+            })
+
+            $scope.audio.play();
+            console.log("quase");*/
+
+            ionic.Platform.ready(function() {
+                var audio = $cordovaMedia.newMedia(trackInfo.track.preview_url);
+
+                console.log(trackInfo.track.preview_url+".mp3");
+                $scope.audio = $cordovaMedia.newMedia(trackInfo.track.preview_url+".mp3");
+
+                $scope.audio.play();
+            })
+
         };
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
+
+        function onError(err) {
+            console.log("playAudio():Audio Error " + err);
+        }
+        $scope.openSpotify = function(link) {
+            window.open(link, '_blank', 'location=yes');
+        };
+
+        $scope.stop = function() {
+            if ($scope.audio) {
+                $scope.audio.pause();
+            }
+        };
+
+        $scope.play = function() {
+            if ($scope.audio) {
+                $scope.audio.play();
+            }
+        };
+    })
+
+    .controller('ListsCtrl', function($scope, $http, $stateParams, $state, $ionicPlatform, $cordovaOauth, $localstorage, Spotify) {
+        var clientId = 'a8ca1abb7621448cb3a1216604f321c3';
+        $scope.playlists = [];
+
+        $http.get("https://api.spotify.com/v1/search?q=%22" + $stateParams.keywords + "%22&type=playlist", { })
+            .success(function(data)
+            {
+                $scope.playlistsID = data.playlists.items;
+            })
+            .error(function(data) {
+                alert("ERROR");
+            });
+
+        https://api.spotify.com/v1/users/{user_id}/playlists/{playlist_id}/tracks
+
+            $scope.enterPlaylist = function(owner_id, playlist_id){
+
+                $state.go('playlist', {owner_id: owner_id, playlist_id: playlist_id});
+            }
+
+        /*$scope.performLogin = function() {
+         $cordovaOauth.spotify(clientId, ['user-read-private', 'playlist-read-private']).then(function(result) {
+         $localstorage.set('spotify-token', result.access_token);
+         Spotify.setAuthToken(result.access_token);
+         $scope.updateInfo();
+         }, function(error) {
+         console.log("Error -> " + error);
+         });
+         };
+
+         $scope.updateInfo = function() {
+
+         Spotify.getCurrentUser().then(function (data) {
+         // $scope.getUserPlaylists(data.id);
+         $scope.getPlaylistBasedOnID();
+         }, function(error) {
+         $scope.performLogin();
+         });
+         };
+
+         $ionicPlatform.ready(function() {
+         var storedToken = $localstorage.get('spotify-token');
+         if (storedToken !== null) {
+         Spotify.setAuthToken(storedToken);
+         $scope.updateInfo();
+         } else {
+         $scope.performLogin();
+         }
+         });
+
+         $scope.getUserPlaylists = function(userid) {
+         Spotify.getUserPlaylists(userid).then(function (data) {
+         $scope.playlists = data.items;
+         });
+         }
+
+         $scope.getPlaylistBasedOnID = function(){
+         Spotify.getPlaylist('1176458919', '6Df19VKaShrdWrAnHinwVO').then(function (data) {
+         console.log(data);
+         $scope.playlistsID = data.items;
+         });
+         };*/
         // END OF NEW
     });
