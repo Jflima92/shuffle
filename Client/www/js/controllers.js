@@ -183,6 +183,23 @@ angular.module('shuffle.controllers', [])
                         $scope.weather = response.data.weather[0].description;
                         $scope.city = response.data.name;
                         $scope.country = response.data.sys.country;
+
+                        var code = response.data.weather[0].id;
+
+                        if (code == 800)
+                            $scope.image = "sunny";
+                        else {
+                            code = code / 100;
+                            if (code == 2)
+                                $scope.image = "stormy";
+                            else if (code == 3 || code == 5)
+                                $scope.image = "rainy";
+                            else if (code == 6)
+                                $scope.image = "snowy";
+                            else 
+                                $scope.image = "cloudy";
+                        } 
+
                     }, function errorCallback(response) {
                         console.log("openweathermapAPI failed");
                     });
