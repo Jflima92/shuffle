@@ -29,3 +29,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 body > ion-nav-view > ion-tabs > ion-nav-view:nth-child(3) > ion-view > ion-content > div.scroll > div:nth-child(1) > div:nth-child(1) > button {
 	color: black;
 }
+
+.login-page{
+  background-image:url("../img/login-bg.png");
+  margin-left: -5%;
+}
+
+.button-bordeaux {
+	color: rgb(96,5,2);
+}
+
