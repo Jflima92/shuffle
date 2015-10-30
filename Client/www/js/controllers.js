@@ -149,7 +149,7 @@ angular.module('shuffle.controllers', [])
         $scope.chat = Chats.get($stateParams.chatId);
     })
 
-    .controller('WeatherCtrl', function($scope, $state) {
+    .controller('WeatherCtrl', function($scope, $state, $http) {
         $scope.settings = {
             enableFriends: true
         };
@@ -158,6 +158,19 @@ angular.module('shuffle.controllers', [])
             console.log(type);
             $state.go('lists', {keywords: type});
         };
+
+        $http({
+            method: 'GET',
+            url: 'http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&APPID=7ce75d26c184e8a46d2e6e0c47c6f4c3'
+        }).then(function successCallback(response) {
+            $scope.weather=response.data.weather[0].description;
+            console.log(response.data);
+        }, function errorCallback(response) {
+            console.log("openweathermapAPI failed");
+        });
+
+
+
     })
 
     .controller('AboutCtrl', function($scope, $ionicNavBarDelegate, $location) {
