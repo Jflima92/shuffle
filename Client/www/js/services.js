@@ -49,15 +49,15 @@ angular.module('shuffle.services', [])
       };
     })
 
-    .factory('socket', function(socketFactory){
-      var mySocket = io.connect("http://localhost:3000");
+  /*.factory('socket', function(socketFactory){
+   var mySocket = io.connect("http://localhost:3000");
 
-      var mySocket = socketFactory({
-        ioSocket: mySocket
-      });
+   var mySocket = socketFactory({
+   ioSocket: mySocket
+   });
 
-      return mySocket;
-    })
+   return mySocket;
+   })*/
 
     .factory('$localstorage', ['$window', function($window) {
       return {
@@ -77,4 +77,41 @@ angular.module('shuffle.services', [])
           $window.localStorage.clear();
         }
       }
-    }]);
+    }])
+
+    .factory('geoLocation', function ($localstorage, $cordovaGeolocation) {
+      return {
+        setGeolocation: function (latitude, longitude) {
+          var _position = {
+            latitude: latitude,
+            longitude: longitude
+          }
+          $localstorage.setObject('geoLocation', _position);
+        },
+        getGeolocation: function () {
+          var geo = $localstorage.getObject('geoLocation');
+          return glocation = {
+            lat: geo.latitude,
+            lng: geo.longitude
+          }
+        },
+
+        getPosition: function () {
+          var posOptions = {timeout: 10000, enableHighAccuracy: false};
+          $ionicPlatform.ready(function () {
+            $cordovaGeolocation
+                .getCurrentPosition(posOptions)
+                .then(function (position) {
+                  var lat = position.coords.latitude;
+                  var long = position.coords.longitude;
+                  return lat, long;
+
+                },
+                function (err) {
+                  console.log(err);
+                });
+          })
+        }
+      }
+    });
+

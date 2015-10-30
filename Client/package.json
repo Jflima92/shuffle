@@ -29,7 +29,8 @@
       }
     },
     "cordova-plugin-inappbrowser",
-    "org.apache.cordova.media"
+    "org.apache.cordova.media",
+    "cordova-plugin-geolocation"
   ],
   "cordovaPlatforms": [
     "android"

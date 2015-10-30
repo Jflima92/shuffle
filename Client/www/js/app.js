@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', 'btford.socket-io', 'ngCordova', 'spotify'])
 
-    .run(function($ionicPlatform) {
+    .run(function($ionicPlatform, $cordovaGeolocation, geoLocation) {
         $ionicPlatform.ready(function() {
             // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
             // for form inputs)
@@ -21,9 +21,16 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
                 StatusBar.styleLightContent();
             }
 
-
-
-        });
+            var posOptions = {timeout: 10000, enableHighAccuracy: false};
+            $cordovaGeolocation
+                .getCurrentPosition(posOptions)
+                .then(function (position) {
+                    console.log(position);
+                    geoLocation.setGeolocation(position.coords.latitude, position.coords.longitude)
+                }, function (err) {
+                    geoLocation.setGeolocation(41.1783982, -8.5951453)
+                });
+        })
     })
 
     .config(function($cordovaFacebookProvider){
@@ -71,15 +78,15 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
             })
 
             .state('About', {
-               url: '/about',
-               templateUrl: 'templates/about.html',
-               controller: 'AboutCtrl'
+                url: '/about',
+                templateUrl: 'templates/about.html',
+                controller: 'AboutCtrl'
             })
 
             .state('Player', {
-               url: '/player',
-               templateUrl: 'templates/player.html',
-               controller: 'PlayerCtrl'
+                url: '/player',
+                templateUrl: 'templates/player.html',
+                controller: 'PlayerCtrl'
             })
 
             // setup an abstract state for the tabs directive
@@ -125,7 +132,7 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
                 views: {
                     'tab-weather': {
                         templateUrl: 'templates/tab-weather.html',
-                        controller: 'WeatherCtrl'
+                        controller: 'WeatherCtrl',
                     }
                 }
             })

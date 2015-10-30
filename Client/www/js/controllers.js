@@ -1,7 +1,7 @@
 angular.module('shuffle.controllers', [])
 
 
-    .controller('NavCtrl', function($scope, $state, $location, socket, $localstorage, $rootScope) {
+    .controller('NavCtrl', function($scope, $state, $location, $localstorage, $rootScope) {
 
 
 
@@ -77,11 +77,8 @@ angular.module('shuffle.controllers', [])
         }
     })
 
-    .controller('IntroCtrl', function($scope, $state, $cordovaFacebook, $ionicPlatform, socket, $location, $rootScope, $localstorage) {
+    .controller('IntroCtrl', function($scope, $state, $cordovaFacebook, $ionicPlatform, $location, $rootScope, $localstorage) {
 
-        socket.on('connect', function(){
-            console.log("connected")
-        })
 
         if($localstorage.get('loggedIn') == 'true'){
             $rootScope.userPic = $localstorage.get('userPic');
@@ -149,28 +146,57 @@ angular.module('shuffle.controllers', [])
         $scope.chat = Chats.get($stateParams.chatId);
     })
 
-    .controller('WeatherCtrl', function($scope, $state, $http) {
+    .controller('WeatherCtrl', function($scope, $state, $http, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
         $scope.settings = {
             enableFriends: true
         };
+
+
+
+        var posOptions = {timeout: 10000, enableHighAccuracy: false};
+
+        var lati = 0;
+        var longi = 0;
+
+        $ionicPlatform.ready(function () {
+
+            $ionicLoading.show({
+                template: 'Loading...',
+                duration: '2300'
+            });
+
+            $cordovaGeolocation
+                .getCurrentPosition(posOptions)
+                .then(function (position) {
+                    var lat = position.coords.latitude;
+                    var long = position.coords.longitude;
+
+
+
+                    lati = lat;
+                    longi = long;
+
+                    $http({
+                        method: 'GET',
+                        url: 'http://api.openweathermap.org/data/2.5/weather?lat='+lati+'&lon='+longi+'&APPID=7ce75d26c184e8a46d2e6e0c47c6f4c3'
+                    }).then(function successCallback(response) {
+                        $scope.weather = response.data.weather[0].description;
+                        $scope.city = response.data.name;
+                        $scope.country = response.data.sys.country;
+                    }, function errorCallback(response) {
+                        console.log("openweathermapAPI failed");
+                    });
+
+                }, function (err) {
+                    console.log(err);
+                });
+
+        })
 
         $scope.gotoPlaylist = function(type){
             console.log(type);
             $state.go('lists', {keywords: type});
         };
-
-        $http({
-            method: 'GET',
-            url: 'http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&APPID=7ce75d26c184e8a46d2e6e0c47c6f4c3'
-        }).then(function successCallback(response) {
-            $scope.weather = response.data.weather[0].description;
-            $scope.city = response.data.name;
-            $scope.country = response.data.sys.country; 
-        }, function errorCallback(response) {
-            console.log("openweathermapAPI failed");
-        });
-
-
 
     })
 
@@ -228,11 +254,11 @@ angular.module('shuffle.controllers', [])
 
             console.log(trackInfo.track.preview_url);
             /*ionic.Platform.ready(function(){
-                $scope.audio = new Media(trackInfo.track.preview_url,  onSuccess, onError);
-            })
+             $scope.audio = new Media(trackInfo.track.preview_url,  onSuccess, onError);
+             })
 
-            $scope.audio.play();
-            console.log("quase");*/
+             $scope.audio.play();
+             console.log("quase");*/
 
             ionic.Platform.ready(function() {
                 var audio = $cordovaMedia.newMedia(trackInfo.track.preview_url);
