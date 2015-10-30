@@ -127,6 +127,7 @@ angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', '
              }
              }
              })*/
+
             .state('tab.weather', {
                 url: '/weather',
                 views: {
