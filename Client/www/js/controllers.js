@@ -163,8 +163,9 @@ angular.module('shuffle.controllers', [])
             method: 'GET',
             url: 'http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&APPID=7ce75d26c184e8a46d2e6e0c47c6f4c3'
         }).then(function successCallback(response) {
-            $scope.weather=response.data.weather[0].description;
-            console.log(response.data);
+            $scope.weather = response.data.weather[0].description;
+            $scope.city = response.data.name;
+            $scope.country = response.data.sys.country; 
         }, function errorCallback(response) {
             console.log("openweathermapAPI failed");
         });
