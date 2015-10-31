@@ -39,3 +39,22 @@ body > ion-nav-view > ion-tabs > ion-nav-view:nth-child(3) > ion-view > ion-cont
 	color: rgb(96,5,2);
 }
 
+
+body > ion-nav-bar.bar-balanced.nav-bar-container > div:nth-child(2) > ion-header-bar {
+	color: rgb(96,5,2);
+}
+
+.bordeaux {
+	background-color: rgb(96,5,2)!important;
+	color: white;
+	font-size: 35px;
+	font-family: 'DroidSans';
+}
+
+.scroll-content {
+	background-color: #EAF2DA;
+}
+
+.grey {
+	background-color: #959994 !important;
+}

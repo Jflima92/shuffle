@@ -9094,3 +9094,18 @@ body > ion-nav-view > ion-tabs > ion-nav-view:nth-child(3) > ion-view > ion-cont
 
 .button-bordeaux {
   color: #600502; }
+
+body > ion-nav-bar.bar-balanced.nav-bar-container > div:nth-child(2) > ion-header-bar {
+  color: #600502; }
+
+.bordeaux {
+  background-color: #600502 !important;
+  color: white;
+  font-size: 35px;
+  font-family: 'DroidSans'; }
+
+.scroll-content {
+  background-color: #EAF2DA; }
+
+.grey {
+  background-color: #959994 !important; }

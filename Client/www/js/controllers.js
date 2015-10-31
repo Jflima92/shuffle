@@ -183,6 +183,7 @@ angular.module('shuffle.controllers', [])
                         $scope.weather = response.data.weather[0].description;
                         $scope.city = response.data.name;
                         $scope.country = response.data.sys.country;
+                        $scope.temperature = Math.round(response.data.main.temp-272.15);
 
                         var code = response.data.weather[0].id;
 
