@@ -55,6 +55,10 @@ body > ion-nav-bar.bar-balanced.nav-bar-container > div:nth-child(2) > ion-heade
 	background-color: #CCC8A7;
 }
 
-.grey {
-	background-color: #949997 !important;
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+    color: #776F57!important;
+}
+
+.tab-nav {
+ background-color: #CCC8A7;	
 }

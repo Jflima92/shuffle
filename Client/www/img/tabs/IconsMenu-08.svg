@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="52.207px" height="65.882px" viewBox="0 0 52.207 65.882" enable-background="new 0 0 52.207 65.882" xml:space="preserve">
+<text transform="matrix(1 0 0 1 6.103516e-005 61.0781)" fill="#5D5D5D" font-family="'DroidSans'" font-size="20">Mood</text>
+<circle fill="none" stroke="#5D5D5D" stroke-width="3" stroke-miterlimit="10" cx="26.104" cy="21.319" r="18.818"/>
+<g>
+	<circle fill="#5D5D5D" cx="18.353" cy="20.318" r="2.316"/>
+</g>
+<g>
+	<circle fill="#5D5D5D" cx="33.585" cy="20.144" r="2.316"/>
+</g>
+<g>
+	<path fill="#5D5D5D" d="M26.104,32.067c-4.489,0-8.607-3.835-8.78-3.999c-0.603-0.568-0.63-1.518-0.062-2.12
+		s1.518-0.63,2.118-0.063l0,0c0.034,0.032,3.435,3.183,6.724,3.183c3.254,0,6.383-3.113,6.414-3.145
+		c0.583-0.589,1.533-0.592,2.12-0.011c0.588,0.582,0.596,1.528,0.015,2.118C34.491,28.195,30.625,32.067,26.104,32.067z"/>
+</g>
+</svg>
