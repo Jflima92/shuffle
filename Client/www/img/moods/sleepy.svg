@@ -5,7 +5,7 @@
 	 width="446.978px" height="446.978px" viewBox="0 0 446.978 446.978" enable-background="new 0 0 446.978 446.978"
 	 xml:space="preserve">
 <g>
-	<path fill="#600502" d="M446.978,374.978c0,39.764-32.236,72-72,72H72c-39.765,0-72-32.236-72-72V72C0,32.235,32.236,0,72,0
+	<path fill="#5D5777" d="M446.978,374.978c0,39.764-32.236,72-72,72H72c-39.765,0-72-32.236-72-72V72C0,32.235,32.236,0,72,0
 		h302.978c39.764,0,72,32.236,72,72V374.978z"/>
 </g>
 <text transform="matrix(1 0 0 1 157.7247 397.486)" fill="#FFFFFF" font-family="'DroidSans'" font-size="45">Sleepy</text>
@@ -13,6 +13,10 @@
 <path fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
 	M290.211,191.992c0,0-9.639-9.093-19.632-9.093c-9.993,0-18.948,9.093-18.948,9.093"/>
 <path fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-	M193.633,191.992c0,0-9.639-9.093-19.632-9.093c-9.993,0-18.948,9.093-18.948,9.093"/>
+	M193.633,191.992c0,0-9.639-9.093-19.632-9.093s-18.948,9.093-18.948,9.093"/>
 <ellipse fill="#FFFFFF" cx="223.489" cy="242.876" rx="14.685" ry="28.919"/>
+<rect x="-349.011" y="-80.503" fill="#B27000" width="83" height="116"/>
+<rect x="-349.011" y="64.776" fill="#596D5A" width="83" height="116"/>
+<rect x="-349.011" y="202.591" fill="#776F57" width="83" height="116"/>
+<rect x="-349.011" y="348.487" fill="#5D5777" width="83" height="116"/>
 </svg>

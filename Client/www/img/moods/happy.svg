@@ -5,7 +5,7 @@
 	 width="446.978px" height="446.978px" viewBox="0 0 446.978 446.978" enable-background="new 0 0 446.978 446.978"
 	 xml:space="preserve">
 <g>
-	<path fill="#600502" d="M446.978,374.978c0,39.764-32.236,72-72,72H72c-39.765,0-72-32.236-72-72V72C0,32.235,32.236,0,72,0
+	<path fill="#5D5777" d="M446.978,374.978c0,39.764-32.236,72-72,72H72c-39.765,0-72-32.236-72-72V72C0,32.235,32.236,0,72,0
 		h302.978c39.764,0,72,32.236,72,72V374.978z"/>
 </g>
 <circle fill="none" stroke="#FFFFFF" stroke-width="10" stroke-miterlimit="10" cx="223.489" cy="197.585" r="119.318"/>
@@ -14,4 +14,8 @@
 <path fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
 	M174.343,239.805c0,0,24.131,22.762,49.146,22.762s47.433-22.762,47.433-22.762"/>
 <text transform="matrix(1 0 0 1 158.406 397.486)" fill="#FFFFFF" font-family="'DroidSans'" font-size="45">Happy</text>
+<rect x="-586.011" y="34.989" fill="#B27000" width="83" height="116"/>
+<rect x="-586.011" y="180.267" fill="#596D5A" width="83" height="116"/>
+<rect x="-586.011" y="318.082" fill="#776F57" width="83" height="116"/>
+<rect x="-586.011" y="463.978" fill="#5D5777" width="83" height="116"/>
 </svg>

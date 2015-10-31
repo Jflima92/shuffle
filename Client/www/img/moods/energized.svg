@@ -5,7 +5,7 @@
 	 width="446.978px" height="446.978px" viewBox="0 0 446.978 446.978" enable-background="new 0 0 446.978 446.978"
 	 xml:space="preserve">
 <g>
-	<path fill="#600502" d="M446.978,374.978c0,39.764-32.236,72-72,72H72c-39.765,0-72-32.236-72-72V72C0,32.236,32.236,0,72,0
+	<path fill="#B27000" d="M446.978,374.978c0,39.764-32.236,72-72,72H72c-39.765,0-72-32.236-72-72V72C0,32.236,32.236,0,72,0
 		h302.978c39.764,0,72,32.236,72,72V374.978z"/>
 </g>
 <text transform="matrix(1 0 0 1 124.9418 397.486)" fill="#FFFFFF" font-family="'DroidSans'" font-size="45">Energized</text>
@@ -27,4 +27,8 @@
 	M137.904,280.105c-18.667-18.504-36.667-38.504-41.333-57.838"/>
 <path fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
 	M113.486,286.382c-11.838-11.735-23.252-24.418-26.212-36.678"/>
+<rect x="-332.011" y="31.989" fill="#B27000" width="83" height="116"/>
+<rect x="-332.011" y="177.267" fill="#596D5A" width="83" height="116"/>
+<rect x="-332.011" y="315.082" fill="#776F57" width="83" height="116"/>
+<rect x="-332.011" y="460.978" fill="#5D5777" width="83" height="116"/>
 </svg>
