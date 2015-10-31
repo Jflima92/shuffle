@@ -196,7 +196,7 @@ angular.module('shuffle.controllers', [])
                             else if (code == 3 || code == 5)
                                 $scope.image = "rainy";
                             else if (code == 6)
-                                $scope.image = "snowy";
+                                $scope.image = "snow";
                             else 
                                 $scope.image = "cloudy";
                         } 
