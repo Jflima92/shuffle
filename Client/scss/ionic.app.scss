@@ -32,8 +32,17 @@ body > ion-nav-view > ion-tabs > ion-nav-view:nth-child(3) > ion-view > ion-cont
 
 .login-page{
   background-image:url("../img/login-bg.png");
+  background-size: 100%;
   margin-left: -5%;
 }
+
+
+@media only screen and (max-width: 500px) {
+    body {
+        background-color: lightblue;
+    }
+}
+
 
 .button-bordeaux {
 	color: rgb(96,5,2);
@@ -60,5 +69,5 @@ body > ion-nav-bar.bar-balanced.nav-bar-container > div:nth-child(2) > ion-heade
 }
 
 .tab-nav {
- background-color: #CCC8A7;	
+
 }

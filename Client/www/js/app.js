@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', 'btford.socket-io', 'ngCordova', 'spotify', 'ionic-audio'])
+angular.module('shuffle', ['ionic', 'shuffle.controllers', 'shuffle.services', 'btford.socket-io', 'ngCordova', 'spotify'])
 
     .run(function($ionicPlatform, $cordovaGeolocation, geoLocation) {
         $ionicPlatform.ready(function() {
