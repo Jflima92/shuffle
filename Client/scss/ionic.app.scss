@@ -63,6 +63,7 @@ body > ion-nav-view > ion-tabs > ion-nav-view:nth-child(3) > ion-view > ion-cont
 		font-size: 80%;
 	}
 
+
 }
 
 @media screen and (max-height: 479px){
@@ -80,11 +81,22 @@ body > ion-nav-view > ion-tabs > ion-nav-view:nth-child(3) > ion-view > ion-cont
 		margin-top: 100%;
 		font-size: 80%;
 	}
+	#happy
+	.tab-mood img{
+		width: 10%;
+	}
+
 
 }
 
 .button-bordeaux {
 	color: rgb(96,5,2);
+}
+
+
+#tabs-weather button {
+	width:80%;
+	margin-left: 10%;
 }
 
 
