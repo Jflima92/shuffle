@@ -36,13 +36,52 @@ body > ion-nav-view > ion-tabs > ion-nav-view:nth-child(3) > ion-view > ion-cont
   margin-left: -5%;
 }
 
-
-@media only screen and (max-width: 500px) {
-    body {
-        background-color: lightblue;
-    }
+.login-button {
+	text-align: center; 
+	margin-top: 95%;
 }
 
+
+.bme-logo {
+	text-align: center; 
+	margin-top: 10%;
+}
+
+@media screen and (max-width: 374px){
+    .login-button {
+		text-align: center; 
+		margin-top: 0;
+	}
+
+	.login-facebook {
+		margin-top: 60%;
+		font-size: 80%;
+	}
+
+	.login-other {
+		margin-top: 60%;
+		font-size: 80%;
+	}
+
+}
+
+@media screen and (max-height: 479px){
+    .login-button {
+		text-align: center; 
+		margin-top: 0;
+	}
+
+	.login-facebook {
+		margin-top: 100%;
+		font-size: 80%;
+	}
+
+	.login-other {
+		margin-top: 100%;
+		font-size: 80%;
+	}
+
+}
 
 .button-bordeaux {
 	color: rgb(96,5,2);
