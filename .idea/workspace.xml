@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9e0c6282-d12d-4a4a-b5fd-f81ae59fe0ed" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/img/logos/Logo-06.svg" afterPath="$PROJECT_DIR$/Client/www/img/logos/Logo-06.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/js/controllers.js" afterPath="$PROJECT_DIR$/Client/www/js/controllers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/css/ionic.app.css" afterPath="$PROJECT_DIR$/Client/www/css/ionic.app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/www/css/ionic.app.min.css" afterPath="$PROJECT_DIR$/Client/www/css/ionic.app.min.css" />
     </list>
     <ignored path="shuffle.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,8 +57,8 @@
       <file leaf-file-name="controllers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Client/www/js/controllers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.8543517">
-              <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.33687943">
+              <caret line="187" column="42" selection-start-line="187" selection-start-column="42" selection-end-line="187" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -899,7 +899,7 @@
       <workItem from="1448642738206" duration="1159000" />
       <workItem from="1448644348012" duration="1969000" />
       <workItem from="1448870952614" duration="2048000" />
-      <workItem from="1448896775340" duration="1530000" />
+      <workItem from="1448896775340" duration="1996000" />
     </task>
     <task id="LOCAL-00001" summary="Added icon">
       <created>1446219237723</created>
@@ -937,11 +937,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448872701789</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fixed weather loading on init">
+      <created>1448898329877</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1448898329877</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120035000" />
+    <option name="totallyTimeSpent" value="120501000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -954,15 +960,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="25" width="1368" height="743" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21221864" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1800643" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4517685" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28410915" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -980,13 +987,13 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Memory Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32636657" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
+    <option name="SHOW_DETAILS" value="false" />
     <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
     </option>
@@ -1004,7 +1011,8 @@
     <MESSAGE value="Minor fixes and updated icon" />
     <MESSAGE value="minor changes" />
     <MESSAGE value="fixed logo and description on about page" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed logo and description on about page" />
+    <MESSAGE value="fixed weather loading on init" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed weather loading on init" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1344,6 +1352,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1386,8 +1395,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/www/js/controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8543517">
-          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33687943">
+          <caret line="187" column="42" selection-start-line="187" selection-start-column="42" selection-end-line="187" selection-end-column="42" />
           <folding />
         </state>
       </provider>
