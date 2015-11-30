@@ -146,78 +146,88 @@ angular.module('shuffle.controllers', [])
         $scope.chat = Chats.get($stateParams.chatId);
     })
 
-    .controller('WeatherCtrl', function($scope, $timeout, $state, $http, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
-        $scope.settings = {
-            enableFriends: true
-        };
-
-
+    .controller('WeatherCtrl', function($scope, $timeout, $state, $http, geoLocation, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
 
         var posOptions = {timeout: 10000, enableHighAccuracy: false};
 
         var lati = 0;
         var longi = 0;
 
-        $ionicPlatform.ready(function () {
 
-            $ionicLoading.show({
-                content: 'Loading',
-                animation: 'fade-in',
-                showBackdrop: true,
-                maxWidth: 200,
-                showDelay: 0
-            });
+        $ionicLoading.show({
+            content: 'Loading',
+            animation: 'fade-in',
+            showBackdrop: true,
+            maxWidth: 200,
+            showDelay: 0
+        });
 
-            $cordovaGeolocation
-                .getCurrentPosition(posOptions)
-                .then(function (position) {
-                    var lat = position.coords.latitude;
-                    var long = position.coords.longitude;
+        lati = geoLocation.getGeolocation().lat;
+        longi = geoLocation.getGeolocation().lng;
+
+        $http({
+            method: 'GET',
+            url: 'http://api.openweathermap.org/data/2.5/weather?lat='+lati+'&lon='+longi+'&APPID=7ce75d26c184e8a46d2e6e0c47c6f4c3'
+        }).then(function successCallback(response) {
+            $scope.weather = response.data.weather[0].description;
+            $scope.city = response.data.name;
+            $scope.country = response.data.sys.country;
+            $scope.temperature = Math.round(response.data.main.temp-272.15);
+
+            var code = response.data.weather[0].id;
+
+            if (code == 800)
+                $scope.image = "sunny";
+            else {
+                code = code / 100;
+                if (code == 2)
+                    $scope.image = "stormy";
+                else if (code == 3 || code == 5)
+                    $scope.image = "rainy";
+                else if (code == 6)
+                    $scope.image = "snow";
+                else
+                    $scope.image = "cloudy";
+            }
+
+        }, function errorCallback(response) {
+            console.log("openweathermapAPI failed");
+        });
+
+        $timeout(function () {
+
+            $ionicLoading.hide();
+        }, 500);
+        /*$ionicPlatform.ready(function () {
+
+         $ionicLoading.show({
+         content: 'Loading',
+         animation: 'fade-in',
+         showBackdrop: true,
+         maxWidth: 200,
+         showDelay: 0
+         });
+
+         $cordovaGeolocation
+         .getCurrentPosition(posOptions)
+         .then(function (position) {
+         var lat = position.coords.latitude;
+         var long = position.coords.longitude;
 
 
 
-                    lati = lat;
-                    longi = long;
 
-                    $http({
-                        method: 'GET',
-                        url: 'http://api.openweathermap.org/data/2.5/weather?lat='+lati+'&lon='+longi+'&APPID=7ce75d26c184e8a46d2e6e0c47c6f4c3'
-                    }).then(function successCallback(response) {
-                        $scope.weather = response.data.weather[0].description;
-                        $scope.city = response.data.name;
-                        $scope.country = response.data.sys.country;
-                        $scope.temperature = Math.round(response.data.main.temp-272.15);
 
-                        var code = response.data.weather[0].id;
+         }, function (err) {
+         console.log(err);
+         });
 
-                        if (code == 800)
-                            $scope.image = "sunny";
-                        else {
-                            code = code / 100;
-                            if (code == 2)
-                                $scope.image = "stormy";
-                            else if (code == 3 || code == 5)
-                                $scope.image = "rainy";
-                            else if (code == 6)
-                                $scope.image = "snow";
-                            else 
-                                $scope.image = "cloudy";
-                        }
+         $timeout(function () {
 
-                    }, function errorCallback(response) {
-                        console.log("openweathermapAPI failed");
-                    });
+         $ionicLoading.hide();
+         }, 1200);
 
-                }, function (err) {
-                    console.log(err);
-                });
-
-            $timeout(function () {
-
-                $ionicLoading.hide();
-            }, 1200);
-
-        })
+         })*/
 
         $scope.gotoPlaylist = function(){
             console.log($scope.image);
@@ -267,13 +277,13 @@ angular.module('shuffle.controllers', [])
         $scope.$on('$ionicView.beforeEnter', function() {
             var playlists;
             var keys =
-            $ionicLoading.show({
-                content: 'Loading',
-                animation: 'fade-in',
-                showBackdrop: true,
-                maxWidth: 200,
-                showDelay: 0
-            });
+                $ionicLoading.show({
+                    content: 'Loading',
+                    animation: 'fade-in',
+                    showBackdrop: true,
+                    maxWidth: 200,
+                    showDelay: 0
+                });
 
             $scope.tracks = null;
             console.log("params: " + $stateParams.keywords);
