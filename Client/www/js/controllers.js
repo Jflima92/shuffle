@@ -146,13 +146,10 @@ angular.module('shuffle.controllers', [])
         $scope.chat = Chats.get($stateParams.chatId);
     })
 
-    .controller('WeatherCtrl', function($scope, $timeout, $state, $http, geoLocation, $cordovaGeolocation, $ionicPlatform, $ionicLoading) {
-
-        var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    .controller('WeatherCtrl', function($scope, $timeout, $state, $http, geoLocation, $ionicPlatform, $ionicLoading) {
 
         var lati = 0;
         var longi = 0;
-
 
         $ionicLoading.show({
             content: 'Loading',
@@ -161,6 +158,7 @@ angular.module('shuffle.controllers', [])
             maxWidth: 200,
             showDelay: 0
         });
+
 
         lati = geoLocation.getGeolocation().lat;
         longi = geoLocation.getGeolocation().lng;
@@ -194,40 +192,14 @@ angular.module('shuffle.controllers', [])
             console.log("openweathermapAPI failed");
         });
 
+
+
         $timeout(function () {
 
             $ionicLoading.hide();
         }, 500);
-        /*$ionicPlatform.ready(function () {
-
-         $ionicLoading.show({
-         content: 'Loading',
-         animation: 'fade-in',
-         showBackdrop: true,
-         maxWidth: 200,
-         showDelay: 0
-         });
-
-         $cordovaGeolocation
-         .getCurrentPosition(posOptions)
-         .then(function (position) {
-         var lat = position.coords.latitude;
-         var long = position.coords.longitude;
 
 
-
-
-
-         }, function (err) {
-         console.log(err);
-         });
-
-         $timeout(function () {
-
-         $ionicLoading.hide();
-         }, 1200);
-
-         })*/
 
         $scope.gotoPlaylist = function(){
             console.log($scope.image);
@@ -245,25 +217,45 @@ angular.module('shuffle.controllers', [])
     })
 
     // NEW 
-    .controller('PlaylistCtrl', function($scope, $stateParams, $timeout, $ionicLoading, $http, $cordovaOauth, $ionicPlatform, $localstorage, Spotify, $cordovaMedia){
+    .controller('PlaylistCtrl', function($scope, $http, $location,   $state, $stateParams, $timeout, $ionicLoading, $http, $cordovaOauth, $ionicPlatform, $localstorage, Spotify, $cordovaMedia){
 
-        var clientId = 'a8ca1abb7621448cb3a1216604f321c3';
+        var clientId = '0117240bd6d743c98064d7765e69da76';
+        var secret = '8550fc1bc6104c3bb755d8dc1db2cd43';
         console.log("params before: " + $stateParams.keywords);
-        /*var owner_id = $stateParams.owner_id;
-         var playlist_id = $stateParams.playlist_id;*/
+
         var spotToken = $localstorage.get('spotify-token');
-        //console.log("https://api.spotify.com/v1/users/" + owner_id + "/playlists/" + playlist_id + "/tracks");
+
+
 
         $scope.performLogin = function() {
             $cordovaOauth.spotify(clientId, ['user-read-private', 'playlist-read-private']).then(function(result) {
+                console.log(JSON.stringify(result));
                 $localstorage.set('spotify-token', result.access_token);
                 Spotify.setAuthToken(result.access_token);
+                $state.go('playlist', {keywords: $stateParams.keywords});
+                $location.url('tab/playlist/'+$stateParams.keywords);
             }, function(error) {
                 console.log("Error -> " + error);
             });
         };
 
+        /*var postData = {
+         'grant_type': 'refresh_token',
+         'refresh_token': $localstorage.get('spotify-token')
+         }*/
+
         if(spotToken != null){
+            /*console.log("AUWIEQW");
+             $http({
+             url: 'https://accounts.spotify.com/api/token',
+             method: 'POST',
+             data: postData,
+             headers: {'Authorization': 'Basic ' +  buffer}
+             }).success(function (data, status, headers, config) {
+             console.log(JSON.stringify(data));
+             }).error(function (data, status, headers, config) {
+             //handle error
+             });*/
             Spotify.setAuthToken(spotToken)
         }
         else {
@@ -298,6 +290,7 @@ angular.module('shuffle.controllers', [])
 
                     var owner_id = getPlaylist.owner.id;
                     var playlist_id = getPlaylist.id;
+                    $scope.listname =getPlaylist.name;
 
 
 
@@ -335,13 +328,16 @@ angular.module('shuffle.controllers', [])
              $scope.audio = new Media(trackInfo.track.preview_url,  onSuccess, onError);
              })
 
-             $scope.audio.play();
+             $scope.audio.play();1200
              console.log("quase");*/
 
             ionic.Platform.ready(function() {
                 var audio = $cordovaMedia.newMedia(trackInfo.track.preview_url);
 
                 console.log(trackInfo.track.preview_url+".mp3");
+                if($scope.audio != null)
+                    $scope.audio.stop();
+
                 $scope.audio = $cordovaMedia.newMedia(trackInfo.track.preview_url+".mp3");
 
                 $scope.audio.play();
@@ -393,47 +389,4 @@ angular.module('shuffle.controllers', [])
                 $state.go('playlist', {owner_id: owner_id, playlist_id: playlist_id});
             }
 
-        /*$scope.performLogin = function() {
-         $cordovaOauth.spotify(clientId, ['user-read-private', 'playlist-read-private']).then(function(result) {
-         $localstorage.set('spotify-token', result.access_token);
-         Spotify.setAuthToken(result.access_token);
-         $scope.updateInfo();
-         }, function(error) {
-         console.log("Error -> " + error);
-         });
-         };
-
-         $scope.updateInfo = function() {
-
-         Spotify.getCurrentUser().then(function (data) {
-         // $scope.getUserPlaylists(data.id);
-         $scope.getPlaylistBasedOnID();
-         }, function(error) {
-         $scope.performLogin();
-         });
-         };
-
-         $ionicPlatform.ready(function() {
-         var storedToken = $localstorage.get('spotify-token');
-         if (storedToken !== null) {
-         Spotify.setAuthToken(storedToken);
-         $scope.updateInfo();
-         } else {
-         $scope.performLogin();
-         }
-         });
-
-         $scope.getUserPlaylists = function(userid) {
-         Spotify.getUserPlaylists(userid).then(function (data) {
-         $scope.playlists = data.items;
-         });
-         }
-
-         $scope.getPlaylistBasedOnID = function(){
-         Spotify.getPlaylist('1176458919', '6Df19VKaShrdWrAnHinwVO').then(function (data) {
-         console.log(data);
-         $scope.playlistsID = data.items;
-         });
-         };*/
-        // END OF NEW
     });
